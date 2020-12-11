@@ -4,13 +4,12 @@ body {
 
 p {
     margin-top: 0;
-
 }
 
 #center-col {
     position: absolute;
-    left: 31%;
-    width: 38%;
+    left: 25%;
+    width: 33%;
 }
 
 #header-gif {
@@ -22,7 +21,7 @@ p {
 
 #main-text {
     font-family: Arial;
-    font-size: 20px;
+    font-size: 16px;
     margin: 0;
 }
 
@@ -33,17 +32,18 @@ p {
 .media-item {
     margin-bottom: 40px;
     max-width: 100%;
+    border: 1px solid black;
 }
 
 #assistant-container {
     position: fixed;
-    right: 30px;
+    right: 110px;
     bottom: -2px;
 }
 
 #assistant-img {
     width: 262px;
-    height: 300px;
+    height: 250px;
     margin: 0;
 }
 
