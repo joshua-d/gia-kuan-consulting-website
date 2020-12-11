@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+}
+
+p {
+    margin-top: 0;
+
+}
+
+#center-col {
+    position: absolute;
+    left: 31%;
+    width: 38%;
+}
+
+#header-gif {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 285px;
+    height: 70px;
+}
+
+#main-text {
+    font-family: Arial;
+    font-size: 20px;
+    margin: 0;
+}
+
+#media-list {
+    margin-top: 40px;
+}
+
+.media-item {
+    margin-bottom: 40px;
+    max-width: 100%;
+}
+
+#assistant-container {
+    position: fixed;
+    right: 30px;
+    bottom: -2px;
+}
+
+#assistant-img {
+    width: 262px;
+    height: 300px;
+    margin: 0;
+}
+
+#assistant-gif {
+    position: absolute;
+    width: 262px;
+    height: 300px;
+    margin: 0;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+#contact-info-container {
+    position: fixed;
+    max-width: 220px;
+    max-height: 200px;
+    border: 2px solid gray;
+    background-color: white;
+    right: 250px;
+    bottom: 180px;
+    padding: 20px;
+    font-size: 18px;
+    visibility: hidden;
+    font-family: AssistantFont;
+    font-weight: 600;
+}
+
+
+
+@font-face {
+    font-family: AssistantFont;
+    src: url(/public/css/HandjetCircle-Medium.ttf);
+}
+
+.fade-in {
+animation: fadeIn ease 1s;
+-webkit-animation: fadeIn ease 1s;
+-moz-animation: fadeIn ease 1s;
+-o-animation: fadeIn ease 1s;
+-ms-animation: fadeIn ease 1s;
+}
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
