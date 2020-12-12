@@ -24,11 +24,9 @@ function set_mobile_dimensions() {
     let center_col = document.getElementById('center-col');
     center_col.style.width = '90%';
     center_col.style.left = '5%';
-    //document.getElementById('main-text').style.fontSize = '24px';
 
     let header_gif = document.getElementById('header-gif');
-    header_gif.style.width = '90%';
-    header_gif.style.left = '5%';
+    header_gif.style.width = '100%';
     header_gif.style.height = Math.floor(header_gif.clientWidth * 70/285) + 'px';
 
     document.getElementById('assistant-container').style.visibility = 'hidden';
