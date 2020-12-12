@@ -33,7 +33,7 @@ function set_mobile_dimensions() {
 
     document.getElementById('assistant-container').style.visibility = 'hidden';
 
-    for (let img of document.querySelectorAll('#media-list img')) {
+    for (let img of document.getElementById('media-list').children) {
         let dim_ratio = img.clientWidth / img.clientHeight;
         img.style.width = '100%';
         img.style.height = Math.floor(img.style.clientWidth * dim_ratio) + 'px';
