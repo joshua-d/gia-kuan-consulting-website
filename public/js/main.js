@@ -24,7 +24,7 @@ function set_mobile_dimensions() {
     let center_col = document.getElementById('center-col');
     center_col.style.width = '90%';
     center_col.style.left = '5%';
-    center_col.style.fontSize = '24px';
+    document.getElementById('main-text').style.fontSize = '24px';
 
     let header_gif = document.getElementById('header-gif');
     header_gif.style.width = '90%';
@@ -146,4 +146,4 @@ window.onload = function() {
     populate_cms_content();
     set_listeners();
     if (is_mobile()) set_mobile_dimensions();
-}
+};
