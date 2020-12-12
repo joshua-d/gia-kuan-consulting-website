@@ -1,20 +1,49 @@
 var assistant_shown = false;
+var hiding_assistant = false;
+var assistant_hide_timeout;
 var main_text_content;
 var media_list_content;
 
-function set_listeners() {
-    document.getElementById('assistant-container').onmouseover = function() {
-        if (!assistant_shown) {
-            document.getElementById('assistant-img').src = "public/img/assistant-gif.gif";
-            assistant_shown = true;
-            
-            setTimeout(function() {
-                let contact_info_container = document.getElementById('contact-info-container');
-                contact_info_container.className = 'fade-in';
-                contact_info_container.style.visibility = 'visible';
-            }, 800);
-        }
+function show_assistant() {
+    if (!assistant_shown) {
+        document.getElementById('assistant-img').src = "public/img/assistant-gif.gif";
+        assistant_shown = true;
+
+        setTimeout(function() {
+            let contact_info_container = document.getElementById('contact-info-container');
+            contact_info_container.className = 'fade-in';
+            contact_info_container.style.visibility = 'visible';
+        }, 800);
     }
+    if (hiding_assistant) {
+        clearTimeout(assistant_hide_timeout);
+        hiding_assistant = false;
+    }
+}
+
+function hide_assistant() {
+    if (assistant_shown) {
+        hiding_assistant = true;
+        assistant_hide_timeout = setTimeout(function() {
+            document.getElementById('assistant-img').src = "public/img/assistant-gif-reverse.gif";
+            setTimeout(function() {
+                document.getElementById('assistant-img').src = "public/img/still-assistant.jpg";
+                assistant_shown = false;
+                hiding_assistant = false;
+            }, 1500);
+        }, 3000);
+    }
+}
+
+function set_listeners() {
+    let assistant_container = document.getElementById('assistant-container');
+    let contact_info_container = document.getElementById('contact-info-container')
+    
+    assistant_container.onmouseover = show_assistant;
+    assistant_container.onmouseout = hide_assistant;
+    
+    contact_info_container.onmouseover = show_assistant;
+    contact_info_container.onmouseout = hide_assistant;
 }
 
 function populate_cms_content() {
@@ -71,9 +100,6 @@ function populate_cms_content() {
     });
     
 }
-
-
-
 
 
 window.onload = function() {
