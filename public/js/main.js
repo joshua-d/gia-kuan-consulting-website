@@ -24,7 +24,7 @@ function set_mobile_dimensions() {
     let center_col = document.getElementById('center-col');
     center_col.style.width = '90%';
     center_col.style.left = '5%';
-    document.getElementById('main-text').style.fontSize = '24px';
+    //document.getElementById('main-text').style.fontSize = '24px';
 
     let header_gif = document.getElementById('header-gif');
     header_gif.style.width = '90%';
@@ -33,7 +33,7 @@ function set_mobile_dimensions() {
 
     document.getElementById('assistant-container').style.visibility = 'hidden';
 
-    for (let img of document.getElementById('media-list').children) {
+    for (let img of document.querySelectorAll('#media-list img')) {
         let dim_ratio = img.clientWidth / img.clientHeight;
         img.style.width = '100%';
         img.style.height = Math.floor(img.style.clientWidth * dim_ratio) + 'px';
