@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 //app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '..')));
 
 app.use(bodyParser.json());
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));

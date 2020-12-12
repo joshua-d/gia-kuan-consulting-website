@@ -4,6 +4,35 @@ var assistant_hide_timeout;
 var main_text_content;
 var media_list_content;
 
+function is_mobile() {
+    const to_match = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+
+    return to_match.some((to_match_item) => {
+        return navigator.userAgent.match(to_match_item);
+    });
+}
+
+function set_mobile_dimensions() {
+    let center_col = document.getElementById('center-col');
+    center_col.style.width = '90%';
+    center_col.style.left = '5%';
+
+    let header_gif = document.getElementById('header-gif');
+    header_gif.style.width = '90%';
+    header_gif.style.left = '5%';
+    header_gif.style.height = Math.floor(header_gif.clientWidth * 70/285) + 'px';
+
+    document.getElementById('assistant-container').style.visibility = 'hidden';
+}
+
 function show_assistant() {
     if (!assistant_shown) {
         document.getElementById('assistant-img').src = "public/img/assistant-gif.gif";
@@ -22,12 +51,15 @@ function show_assistant() {
 }
 
 function hide_assistant() {
-    if (assistant_shown) {
+    if (assistant_shown && !hiding_assistant) {
         hiding_assistant = true;
         assistant_hide_timeout = setTimeout(function() {
             document.getElementById('assistant-img').src = "public/img/assistant-gif-reverse.gif";
+            let contact_info_container = document.getElementById('contact-info-container');
+            contact_info_container.className = 'fade-out';
             setTimeout(function() {
                 document.getElementById('assistant-img').src = "public/img/still-assistant.jpg";
+                contact_info_container.style.visibility = 'hidden';
                 assistant_shown = false;
                 hiding_assistant = false;
             }, 1500);
@@ -40,6 +72,7 @@ function set_listeners() {
     let contact_info_container = document.getElementById('contact-info-container')
     
     assistant_container.onmouseover = show_assistant;
+    assistant_container.onclick = show_assistant;
     assistant_container.onmouseout = hide_assistant;
     
     contact_info_container.onmouseover = show_assistant;
@@ -90,7 +123,7 @@ function populate_cms_content() {
                     
                     iframe_elem.src = embed_url;
                     iframe_elem.style.width = '100%';
-                    iframe_elem.onload = () => iframe_elem.style.height = (iframe_elem.clientWidth * 9/16) + 'px';
+                    iframe_elem.onload = () => iframe_elem.style.height = Math.floor(iframe_elem.clientWidth * 9/16) + 'px';
                     media_list_div.appendChild(iframe_elem);
                 }
             }
@@ -105,4 +138,5 @@ function populate_cms_content() {
 window.onload = function() {
     populate_cms_content();
     set_listeners();
+    if (is_mobile()) set_mobile_dimensions();
 }

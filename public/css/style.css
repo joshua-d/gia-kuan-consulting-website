@@ -38,7 +38,7 @@ p {
 #assistant-container {
     position: fixed;
     right: 110px;
-    bottom: -2px;
+    bottom: -3px;
 }
 
 #assistant-img {
@@ -47,7 +47,7 @@ p {
     margin: 0;
 }
 
-#assistant-gif {
+.assistant-gif-loader {
     position: absolute;
     width: 262px;
     height: 300px;
@@ -79,6 +79,7 @@ p {
     src: url(/public/css/HandjetCircle-Medium.ttf);
 }
 
+
 .fade-in {
 animation: fadeIn ease 1s;
 -webkit-animation: fadeIn ease 1s;
@@ -109,4 +110,37 @@ animation: fadeIn ease 1s;
 @-ms-keyframes fadeIn {
 0% {opacity:0;}
 100% {opacity:1;}
+}
+
+
+.fade-out {
+  animation: fadeOut ease 2s;
+  -webkit-animation: fadeOut ease 2s;
+  -moz-animation: fadeOut ease 2s;
+  -o-animation: fadeOut ease 2s;
+  -ms-animation: fadeOut ease 2s;
+}
+@keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-moz-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-o-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-ms-keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
 }
