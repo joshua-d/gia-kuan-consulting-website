@@ -1,8 +1,6 @@
 var assistant_shown = false;
 var hiding_assistant = false;
 var assistant_hide_timeout;
-var main_text_content;
-var media_list_content;
 
 function is_mobile() {
     const to_match = [
@@ -104,6 +102,16 @@ function populate_cms_content() {
             for (let p of main_text_content) {
                 let p_elem = document.createElement('p');
                 p_elem.textContent = p.text;
+                
+                if (p.spans.length > 0) {
+                    for (let span of p.spans) {
+                        if (span.type == 'hyperlink') {
+                            p_elem.innerText = p_elem.innerHTML.substring(0, span.end) + '</a>' + p_elem.innerHTML.substring(span.end);
+                            p_elem.innerHTML = p_elem.innerText.substring(0, span.start) + '<a href="' + span.data.url + '">' + p_elem.innerText.substring(span.start);
+                        }
+                    }
+                }
+                
                 main_text_div.appendChild(p_elem);
             }
 
