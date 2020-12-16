@@ -13,8 +13,8 @@ p {
 }
 
 #header-gif {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 285px;
     height: 70px;
 }
@@ -27,11 +27,11 @@ p {
 }
 
 #media-list {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .media-item {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     max-width: 100%;
     border: 1px solid black;
 }
