@@ -20,7 +20,7 @@ p {
 }
 
 #main-text {
-    font-family: Arial;
+    font-family: BodyFont;
     font-size: 16px;
     margin: 0;
 }
@@ -79,6 +79,10 @@ p {
     src: url(/public/css/HandjetCircle-Medium.ttf);
 }
 
+@font-face {
+    font-family: BodyFont;
+    src: url(/public/css/Inter-Regular.ttf);
+}
 
 .fade-in {
 animation: fadeIn ease 1s;
