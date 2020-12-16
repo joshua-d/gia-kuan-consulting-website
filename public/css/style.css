@@ -27,11 +27,11 @@ p {
 }
 
 #media-list {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .media-item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     max-width: 100%;
     border: 1px solid black;
 }
