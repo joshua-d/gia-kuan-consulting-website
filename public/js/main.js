@@ -22,6 +22,7 @@ function set_mobile_dimensions() {
     let center_col = document.getElementById('center-col');
     center_col.style.width = '90%';
     center_col.style.left = '5%';
+    center_col.style.maxWidth = null;
 
     let header_gif = document.getElementById('header-gif');
     header_gif.style.width = '100%';
@@ -82,6 +83,35 @@ function set_listeners() {
     contact_info_container.onmouseout = hide_assistant;
 }
 
+function get_cms_doc_by_type(type, results) {
+    for (let item of results) {
+        if (item.type === type)
+          return item.data;
+    }
+}
+
+function generate_ps(content, append_div_id, p_class) {
+    let append_div = document.getElementById(append_div_id);
+    for (let p of content) {
+        let p_elem = document.createElement('p');
+        p_elem.textContent = p.text;
+
+        if (p_class != null)
+            p_elem.className = p_class;
+
+        if (p.spans.length > 0) {
+            for (let span of p.spans) {
+                if (span.type == 'hyperlink') {
+                    p_elem.innerText = p_elem.innerHTML.substring(0, span.end) + '</a>' + p_elem.innerHTML.substring(span.end);
+                    p_elem.innerHTML = p_elem.innerText.substring(0, span.start) + '<a href="' + span.data.url + '">' + p_elem.innerText.substring(span.start);
+                }
+            }
+        }
+
+        append_div.appendChild(p_elem);
+    }
+}
+
 function populate_cms_content() {
     
     fetch('https://gia-kuan-consulting.cdn.prismic.io/api/v2')
@@ -94,26 +124,13 @@ function populate_cms_content() {
         .then(response => response.json())
         .then(function(data) {
 
-            let media_list_content = data.results[0].data.media_list;
-            let main_text_content = data.results[1].data.main_text;
+            let media_list_content = get_cms_doc_by_type('homepage_media', data.results).media_list;
+            let main_text_content = get_cms_doc_by_type('homepage_main_text', data.results).main_text;
+            let left_subtext_content = get_cms_doc_by_type('homepage_left_sub-text', data.results).text;
+            let right_subtext_content = get_cms_doc_by_type('homepage_right_sub-text', data.results).text;
 
             //Populate main text
-            let main_text_div = document.getElementById('main-text');
-            for (let p of main_text_content) {
-                let p_elem = document.createElement('p');
-                p_elem.textContent = p.text;
-                
-                if (p.spans.length > 0) {
-                    for (let span of p.spans) {
-                        if (span.type == 'hyperlink') {
-                            p_elem.innerText = p_elem.innerHTML.substring(0, span.end) + '</a>' + p_elem.innerHTML.substring(span.end);
-                            p_elem.innerHTML = p_elem.innerText.substring(0, span.start) + '<a href="' + span.data.url + '">' + p_elem.innerText.substring(span.start);
-                        }
-                    }
-                }
-                
-                main_text_div.appendChild(p_elem);
-            }
+            generate_ps(main_text_content, 'main-text');
 
             //Populate media list
             let media_list_div = document.getElementById('media-list');
@@ -141,7 +158,11 @@ function populate_cms_content() {
                 }
             }
 
-        });
+            //TODO Populate sub text
+            generate_ps(left_subtext_content, 'sub-text-left', 'sub-text-p');
+            generate_ps(right_subtext_content, 'sub-text-right', 'sub-text-p');
+
+          });
 
     });
     

@@ -10,6 +10,7 @@ p {
     position: absolute;
     left: 25%;
     width: 33%;
+    max-width: 679px;
 }
 
 #header-gif {
@@ -71,6 +72,30 @@ p {
     visibility: hidden;
     font-family: AssistantFont;
     font-weight: 600;
+}
+
+
+#sub-text {
+    position: relative;
+    font-family: BodyFont;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+#sub-text-left {
+    display: inline-block;
+    min-width: 33%;
+    margin-right: 10px;
+}
+
+#sub-text-right {
+    display: inline-block;
+    min-width: 33%;
+}
+
+.sub-text-p {
+    margin: 0;
 }
 
 
