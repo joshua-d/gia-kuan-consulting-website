@@ -9,8 +9,8 @@ p {
 #center-col {
     position: absolute;
     left: 25%;
-    width: 33%;
-    max-width: 679px;
+    /*width: 33%;*/
+    max-width: 554.39px;
 }
 
 #header-gif {
