@@ -81,6 +81,8 @@ p {
     font-size: 14px;
     line-height: 1.4;
     margin: 0;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 #sub-text-left {
