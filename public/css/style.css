@@ -41,6 +41,7 @@ p {
     position: fixed;
     right: 110px;
     bottom: -3px;
+    mix-blend-mode: darken;
 }
 
 #assistant-img {
